@@ -35,7 +35,7 @@ module UnicodeAlphanumeric
   
   def self.alphanumeric_categories(options)
     categories = [:Lowercase_Letter, :Uppercase_Letter, :Decimal_Number]
-    if options[:spaces]
+    if options[:spaces] and options[:spaces] != :ascii
       categories << :Space_Separator
     end
     categories

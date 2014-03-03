@@ -33,4 +33,11 @@ class ApiTest < MiniTest::Unit::TestCase
       end
     )
   end
+  
+  def test_space_variants
+    # 00A0: NO-BREAK SPACE
+    # 2003: EM SPACE
+    assert_equal ['+', '¿'], UnicodeAlphanumeric.scan("abc\u00A0Ω +\u2003def ¿", :spaces => true)
+    assert_equal ["\u00A0", '+', "\u2003", '¿'], UnicodeAlphanumeric.scan("abc\u00A0Ω +\u2003def ¿", :spaces => :ascii)
+  end
 end
